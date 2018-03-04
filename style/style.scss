@@ -1,0 +1,82 @@
+$baseFontSize: 12px;
+$baseFontColor: #60A5B7;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url("../image/bg.jpg") no-repeat fixed top;
+  overflow: hidden;
+  font: {
+    size: $baseFontSize;
+    family: "Microsoft YaHei";
+  }
+}
+.layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 32, 45, 0.54);
+  visibility: visible;
+}
+.monitor {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+.department {
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  vertical-align: middle;
+  span{
+    font-size: 2em;
+    color: $baseFontColor;
+  }
+}
+.timeWrapper {float: right}
+.time,.radar {
+  display: inline-block;
+  height: 70px;
+}
+.time {
+  vertical-align: middle;
+  padding-top: 15px;
+  span {
+    display: inline-block;
+    color: $baseFontColor;
+    background-color: #24170F;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 2em;
+  }
+}
+.radar {
+  padding: 12px;
+  img {
+    width: 46px;
+    height: 46px;
+  }
+}
+.block {
+  padding: 10px;
+  .blockTitle {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    font-size: 1.5em;
+    color: #8397B0;
+    background-color: #14141C;
+    border: 1px solid #46474c;
+  }
+}

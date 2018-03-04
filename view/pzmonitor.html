@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=1920">-->
+    <title>盘中监控屏</title>
+    <link rel="stylesheet" href="../style/normalize.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../lib/jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script src="../lib/echarts-4.04/echarts.js"></script>
+    <script src="../js/chartUtils.js"></script>
+</head>
+<body>
+    <div class="layout">
+        <head>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="monitor">
+                        <img src="../image/monitoring.png">
+                    </div>
+                    <div class="department">
+                        <span>指数与量化投资部</span>
+                    </div>
+                </div>
+                <div class="col-lg-6"></div>
+                <div class="col-lg-3">
+                    <div class="timeWrapper">
+                        <div class="time">
+                            <span>09:30:00</span>
+                        </div>
+                        <div class="radar"><img src="../image/radar.png"></div>
+                    </div>
+                </div>
+            </div>
+        </head>
+        <article>
+            <section>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="block">
+                            <div class="blockTitle">ETF折溢价率</div>
+                            <div class="chartWrapper">
+                                <div id="dprChart" style="width: 100%;height: 240px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="block">
+                            <div class="blockTitle">ETF交易量 - 盘中</div>
+                            <div class="chartWrapper">
+                                <div id="tvChart" style="width: 100%;height: 240px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="block">
+                            <div class="blockTitle">股票涨跌情况 - 盘中</div>
+                            <div class="chartWrapper">
+                                <div id="csChart" style="width: 100%;height: 240px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section></section>
+        </article>
+    </div>
+    <script>
+        ChartUtils.init();
+    </script>
+</body>
+</html>
