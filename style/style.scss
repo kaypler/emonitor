@@ -80,3 +80,88 @@ body {
     border: 1px solid #46474c;
   }
 }
+.rollList {
+  color: #97c1d9;
+  background-color: #092143;
+  border: 1px solid #1d3d64;
+  .rl-head {
+    /*height: 50px;*/
+    white-space: nowrap;
+    border-bottom: 1px solid #1d3d64;
+    .rl-title {
+      height: 24px;
+      font-size: 1.2em;
+    }
+    .rl-subtitle {
+      height: 16px;
+      font-size: 0.8em;
+    }
+  }
+  .rl-body {
+    .rl-tr {
+      height: 36px;
+    }
+  }
+  .rl-th,.rl-td {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 5px;
+  }
+}
+#inList {
+  .rl-th,.rl-td {
+    width: 16%;
+  }
+}
+#stList {
+  .rl-th:nth-child(1),.rl-td:nth-child(1) {
+    width: 20%;
+  }
+  .rl-th:nth-child(2),.rl-td:nth-child(2) {
+    width: 22%;
+  }
+  .rl-th:nth-child(3),.rl-td:nth-child(3) {
+    width: 20%;
+  }
+  .rl-th:nth-child(4),.rl-td:nth-child(4) {
+    width: 20%;
+  }
+  .rl-th:nth-child(5),.rl-td:nth-child(5) {
+    width: 15%;
+  }
+}
+.blockWrapper {
+  position: relative;
+  .lightborder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1284px;
+    height: 324px;
+    border-style: solid;
+    border-width: 32px 37px;
+    border-image-source: url("../image/lightborder.png");
+    border-image-slice: 32 37 fill;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+  }
+}
+#rankBlock {
+  padding: 0 10px;
+  .bl-line {
+    padding: 8px 20px;
+    color: #ededed;
+    font-size: 1.3em;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+  .bl-body {
+    padding: 0 20px;
+  }
+}
+#rankList {
+  .rl-th,.rl-td {
+    width: 14%;
+  }
+}

@@ -23,4 +23,28 @@ body { background: url("../image/bg.jpg") no-repeat fixed top; overflow: hidden;
 .block { padding: 10px; }
 .block .blockTitle { height: 40px; line-height: 40px; padding-left: 10px; font-size: 1.5em; color: #8397B0; background-color: #14141C; border: 1px solid #46474c; }
 
+.rollList { color: #97c1d9; background-color: #092143; border: 1px solid #1d3d64; }
+.rollList .rl-head { /*height: 50px;*/ white-space: nowrap; border-bottom: 1px solid #1d3d64; }
+.rollList .rl-head .rl-title { height: 24px; font-size: 1.2em; }
+.rollList .rl-head .rl-subtitle { height: 16px; font-size: 0.8em; }
+.rollList .rl-body .rl-tr { height: 36px; }
+.rollList .rl-th, .rollList .rl-td { display: inline-block; white-space: nowrap; padding: 5px; }
+
+#inList .rl-th, #inList .rl-td { width: 16%; }
+
+#stList .rl-th:nth-child(1), #stList .rl-td:nth-child(1) { width: 20%; }
+#stList .rl-th:nth-child(2), #stList .rl-td:nth-child(2) { width: 22%; }
+#stList .rl-th:nth-child(3), #stList .rl-td:nth-child(3) { width: 20%; }
+#stList .rl-th:nth-child(4), #stList .rl-td:nth-child(4) { width: 20%; }
+#stList .rl-th:nth-child(5), #stList .rl-td:nth-child(5) { width: 15%; }
+
+.blockWrapper { position: relative; }
+.blockWrapper .lightborder { position: absolute; top: 0; left: 0; width: 1284px; height: 324px; border-style: solid; border-width: 32px 37px; border-image-source: url("../image/lightborder.png"); border-image-slice: 32 37 fill; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; }
+
+#rankBlock { padding: 0 10px; }
+#rankBlock .bl-line { padding: 8px 20px; color: #ededed; font-size: 1.3em; letter-spacing: 2px; text-align: center; }
+#rankBlock .bl-body { padding: 0 20px; }
+
+#rankList .rl-th, #rankList .rl-td { width: 14%; }
+
 /*# sourceMappingURL=style.css.map */
