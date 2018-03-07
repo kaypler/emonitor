@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<!--    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=1920">-->
     <title>盘中监控屏</title>
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css">
@@ -16,16 +14,21 @@
     <div class="layout">
         <head>
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-5">
                     <div class="monitor">
                         <img src="../image/monitoring.png">
                     </div>
                     <div class="department">
                         <span>指数与量化投资部</span>
                     </div>
+                    <div class="status">
+                        <div class="st-wrap">
+                            <span class="st-label">监控级别：</span>
+                            <span class="label label-danger">危险</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6"></div>
-                <div class="col-lg-3">
+                <div class="col-lg-4 col-lg-offset-3">
                     <div class="timeWrapper">
                         <div class="time">
                             <span>09:30:00</span>
@@ -40,7 +43,14 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="block">
-                            <div class="blockTitle">ETF折溢价率</div>
+                            <div class="blockTitle">
+                                <span>ETF折溢价率</span>
+                                <div class="cc-container">
+                                    <div class="circle" style="background-color: #239d60;"></div>
+                                    <div class="circle" style="background-color: #fdab31"></div>
+                                    <div class="circle breathe" style="background-color: #f12d2d;"></div>
+                                </div>
+                            </div>
                             <div class="chartWrapper">
                                 <div id="dprChart" style="width: 100%;height: 240px;"></div>
                             </div>
@@ -48,7 +58,14 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="block">
-                            <div class="blockTitle">ETF交易量 - 盘中</div>
+                            <div class="blockTitle">
+                                <span>ETF交易量 - 盘中</span>
+                                <div class="cc-container">
+                                    <div class="circle breathe" style="background-color: #239d60;"></div>
+                                    <div class="circle" style="background-color: #fdab31"></div>
+                                    <div class="circle" style="background-color: #f12d2d;"></div>
+                                </div>
+                            </div>
                             <div class="chartWrapper">
                                 <div id="tvChart" style="width: 100%;height: 240px;"></div>
                             </div>
@@ -56,7 +73,14 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="block">
-                            <div class="blockTitle">股票涨跌情况 - 盘中</div>
+                            <div class="blockTitle">
+                                <span>股票涨跌情况 - 盘中</span>
+                                <div class="cc-container">
+                                    <div class="circle breathe" style="background-color: #239d60;"></div>
+                                    <div class="circle" style="background-color: #fdab31"></div>
+                                    <div class="circle" style="background-color: #f12d2d;"></div>
+                                </div>
+                            </div>
                             <div class="chartWrapper">
                                 <div id="csChart" style="width: 100%;height: 240px;"></div>
                             </div>
@@ -68,7 +92,14 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="block">
-                            <div class="blockTitle">不定期折算</div>
+                            <div class="blockTitle">
+                                <span>不定期折算</span>
+                                <div class="cc-container">
+                                    <div class="circle" style="background-color: #239d60;"></div>
+                                    <div class="circle" style="background-color: #fdab31"></div>
+                                    <div class="circle breathe" style="background-color: #f12d2d;"></div>
+                                </div>
+                            </div>
                             <div class="chartWrapper">
                                 <div id="ocChart" style="width: 100%;height: 300px;"></div>
                             </div>
@@ -76,7 +107,14 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="block">
-                            <div class="blockTitle">大小盘强弱及预测指标走势（今年以来）</div>
+                            <div class="blockTitle">
+                                <span>大小盘强弱及预测指标走势（今年以来）</span>
+                                <div class="cc-container">
+                                    <div class="circle breathe" style="background-color: #239d60;"></div>
+                                    <div class="circle" style="background-color: #fdab31"></div>
+                                    <div class="circle" style="background-color: #f12d2d;"></div>
+                                </div>
+                            </div>
                             <div class="chartWrapper">
                                 <div id="spChart" style="width: 100%;height: 300px;"></div>
                             </div>

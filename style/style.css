@@ -10,6 +10,17 @@ body { background: url("../image/bg.jpg") no-repeat fixed top; overflow: hidden;
 .department { display: inline-block; height: 70px; line-height: 70px; vertical-align: middle; }
 .department span { font-size: 2em; color: #60A5B7; }
 
+.status { height: 70px; line-height: 70px; display: inline-block; vertical-align: middle; }
+.status .st-wrap { margin-left: 10px; }
+.status .st-wrap .st-label { color: #ccc; font-size: 1.2em; }
+
+.circle { display: inline-block; width: 1em; height: 1em; border-radius: 50%; }
+
+.breathe { opacity: 0.1; animation-name: breathe; animation-duration: 3s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+
+@keyframes breathe { from { opacity: 0.1; }
+  50% { opacity: 1; }
+  to { opacity: 0.1; } }
 .timeWrapper { float: right; }
 
 .time, .radar { display: inline-block; height: 70px; }
@@ -21,7 +32,8 @@ body { background: url("../image/bg.jpg") no-repeat fixed top; overflow: hidden;
 .radar img { width: 46px; height: 46px; }
 
 .block { padding: 10px; }
-.block .blockTitle { height: 40px; line-height: 40px; padding-left: 10px; font-size: 1.5em; color: #b7cbda; background-color: rgba(255, 255, 255, 0.1); }
+.block .blockTitle { position: relative; height: 40px; line-height: 40px; padding-left: 10px; font-size: 1.5em; color: #b7cbda; background-color: rgba(255, 255, 255, 0.1); }
+.block .blockTitle .cc-container { position: absolute; top: 0; right: 10px; }
 .block .chartWrapper { background-color: rgba(255, 255, 255, 0.2); }
 
 .rollList { color: #97c1d9; background-color: rgba(9, 33, 67, 0.5); border: 1px solid #1d3d64; }
@@ -51,5 +63,6 @@ body { background: url("../image/bg.jpg") no-repeat fixed top; overflow: hidden;
 #rankBlock .bl-body { padding: 0 20px; }
 
 #rankList .rl-th, #rankList .rl-td { width: 14%; }
+#rankList .badge { background-color: #337ab7; }
 
 /*# sourceMappingURL=style.css.map */

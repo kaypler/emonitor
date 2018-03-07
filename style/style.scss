@@ -43,6 +43,37 @@ body {
     color: $baseFontColor;
   }
 }
+.status {
+  height: 70px;
+  line-height: 70px;
+  display: inline-block;
+  vertical-align: middle;
+  .st-wrap {
+    margin-left: 10px;
+    .st-label {
+      color: #ccc;
+      font-size: 1.2em;
+    }
+  }
+}
+.circle {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+}
+.breathe {
+  opacity: 0.1;
+  animation-name: breathe;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes breathe {
+  from {opacity: 0.1;}
+  50% {opacity: 1;}
+  to {opacity: 0.1;}
+}
 .timeWrapper {float: right}
 .time,.radar {
   display: inline-block;
@@ -72,6 +103,7 @@ body {
 .block {
   padding: 10px;
   .blockTitle {
+    position: relative;
     height: 40px;
     line-height: 40px;
     padding-left: 10px;
@@ -80,6 +112,11 @@ body {
     background-color: rgba(255,255,255,0.1);
     //border: 1px solid #46474c;
     //box-shadow: 0 0 5px 1px rgba(138,109,59,0.5);
+    .cc-container {
+      position: absolute;
+      top: 0;
+      right: 10px;
+    }
   }
   .chartWrapper {
     background-color: rgba(255,255,255,0.2);
@@ -187,5 +224,8 @@ body {
 #rankList {
   .rl-th,.rl-td {
     width: 14%;
+  }
+  .badge {
+    background-color: #337ab7;
   }
 }
