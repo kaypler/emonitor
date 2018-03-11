@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 10px;
+  font-family: "lucida grade","lucida sans unicode",lucida,helvetica,"Hiragino SansGB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+.nav-menu {
+  position: fixed;
+  top: 50px;
+  width: 220px;
+  height: calc(100% - 50px);
+}
+.main-page {
+  margin-left: 220px;
+  margin-top: 40px;
+  height: calc(100% - 80px);
+}
+.main-tab {
+  position: fixed;
+  top: 50px;
+  margin-left: 220px;
+}
+.main-content {
+
+}
+.main-footer {
+  position: fixed;
+  bottom: 0;
+  margin-left: 220px;
+}
+.f-left {
+  float: left;
+}
+.f-right {
+  float: right;
+}
