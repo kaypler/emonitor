@@ -1,16 +1,49 @@
 * { margin: 0; padding: 0; }
 
-html { font-size: 10px; font-family: "lucida grade","lucida sans unicode",lucida,helvetica,"Hiragino SansGB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif; width: 100%; height: 100%; }
+html { font-size: 12px; width: 100%; height: 100%; }
 
-body { width: 100%; height: 100%; }
+body { width: 100%; height: 100%; overflow: hidden; color: #76838f; font-size: 1.1666666667rem; font-family: "lucida grade","lucida sans unicode",lucida,helvetica,"Hiragino SansGB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif; }
 
-.nav-menu { position: fixed; top: 50px; width: 220px; height: calc(100% - 50px); }
+ul { margin: 0; }
+ul li { list-style-type: none; }
 
-.main-page { margin-left: 220px; margin-top: 40px; height: calc(100% - 80px); }
+a { color: #76838f; }
+a:hover { color: #76838f; text-decoration: none; }
 
-.main-tab { position: fixed; top: 50px; margin-left: 220px; }
+.main-navbar { position: fixed; top: 0; background-color: #62a8ea; height: 5rem; width: 100%; }
+.main-navbar .navbar-header { width: 18.3333333333rem; }
+.main-navbar .navbar-header .logo { float: left; height: 3.3333333333rem; width: 3.3333333333rem; margin: 0.6666666667rem 0.4166666667rem 0.6666666667rem 1.25rem; }
+.main-navbar .navbar-header .navbar-brand { float: left; padding: 0; height: 5rem; font-size: 1.8333333333rem; line-height: 5rem; color: #fff; }
+.main-navbar .navbar-content { margin-left: 18.3333333333rem; height: 5rem; }
+.main-navbar .navbar-content .nav-navbar li a { display: block; color: #fff; padding: 1.5833333333rem 1.25rem; line-height: 1.8333333333rem; }
+.main-navbar .navbar-content .nav-navbar li.active { background-color: rgba(0, 0, 0, 0.1); }
+.main-navbar .navbar-content .navbar-right { margin-right: 0; }
+.main-navbar .navbar-content .navbar-right .nav-toolbar li { float: left; }
+.main-navbar .navbar-content .navbar-right .nav-toolbar li a { display: block; color: #fff; font-size: 1.5rem; padding: 1.5833333333rem 1.25rem; line-height: 1.8333333333rem; }
 
-.main-footer { position: fixed; bottom: 0; margin-left: 220px; }
+.main-menu { position: fixed; top: 5rem; width: 18.3333333333rem; height: calc(100vh - 5rem); background-color: #fafafa; border-right: 1px solid #dadada; }
+.main-menu .menu-category { height: 3.3333333333rem; line-height: 3.3333333333rem; padding: 0 1.6666666667rem; background-color: #f1f4f5; border-bottom: 1px solid #c0c0c0; }
+.main-menu .nav-menu li.nav-menu-item { height: 3.3333333333rem; border-bottom: 1px solid #c0c0c0; }
+.main-menu .nav-menu li.nav-menu-item a { display: block; padding: 0 1.4166666667rem; line-height: 3.3333333333rem; border-left: 3px solid transparent; }
+.main-menu .nav-menu li.nav-menu-item a:hover { border-left: 3px solid #337ab7 !important; color: #337ab7 !important; }
+.main-menu .nav-menu li.active a { border-left: 3px solid #337ab7 !important; color: #337ab7 !important; }
+
+.main-tab { position: fixed; left: 0; right: 0; top: 5rem; height: 3.3333333333rem; line-height: 3.3333333333rem; margin-left: 18.3333333333rem; border-bottom: 1px solid #e4eaec; }
+.main-tab .main-tab-content { overflow: hidden; position: relative; height: 3.3333333333rem; }
+.main-tab .main-tab-content .nav-tab { position: absolute; left: 0; }
+.main-tab .main-tab-content .nav-tab li { float: left; width: 7.5em; height: 3.3333333333rem; }
+.main-tab .main-tab-content .nav-tab li a { display: block; position: relative; padding: 0 28px 0 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.main-tab .main-tab-content .nav-tab li a i.fa-close { position: absolute; top: 1rem; right: 1rem; width: 1.1666666667rem; height: 1.1666666667rem; text-align: center; }
+.main-tab .main-tab-content .nav-tab li a i.fa-close:hover { color: #fff; background-color: #f96868; border-radius: 50%; }
+.main-tab .main-tab-content .nav-tab li.index a { padding-right: 13px; text-align: center; }
+.main-tab .main-tab-content .nav-tab li.active { background: #f1f4f5; }
+.main-tab .main-tab-content .nav-tab li.active a { background: none !important; border-left: 1px solid #e4eaec; border-right: 1px solid #e4eaec; }
+
+.main-page { margin-left: 18.3333333333rem; margin-top: 8.3333333333rem; height: calc(100vh - 11.66667rem); position: relative; }
+.main-page .main-content { width: 100%; }
+.main-page .main-content .page-frame { position: relative; width: 100%; height: calc(100vh - 11.66667rem); overflow: hidden; }
+
+.main-footer { position: fixed; bottom: 0; left: 0; right: 0; margin-left: 18.3333333333rem; height: 3.3333333333rem; line-height: 3.3333333333rem; padding: 0 1.6666666667rem; background-color: rgba(0, 0, 0, 0.02); border-top: 1px solid #e4eaec; }
 
 .f-left { float: left; }
 
