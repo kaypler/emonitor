@@ -1,0 +1,231 @@
+$baseFontSize: 12px;
+$baseFontColor: #60A5B7;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url("../image/bg.jpg") no-repeat fixed top;
+  overflow: hidden;
+  font: {
+    size: $baseFontSize;
+    family: "Microsoft YaHei";
+  }
+}
+.layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 32, 45, 0.54);
+  //background-image: linear-gradient(to bottom, #082041 0%, #184678 100%);
+  visibility: visible;
+}
+.monitor {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+.department {
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  vertical-align: middle;
+  span{
+    font-size: 2em;
+    color: $baseFontColor;
+  }
+}
+.status {
+  height: 70px;
+  line-height: 70px;
+  display: inline-block;
+  vertical-align: middle;
+  .st-wrap {
+    margin-left: 10px;
+    .st-label {
+      color: #ccc;
+      font-size: 1.2em;
+    }
+  }
+}
+.circle {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+}
+.breathe {
+  opacity: 0.1;
+  animation-name: breathe;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes breathe {
+  from {opacity: 0.1;}
+  50% {opacity: 1;}
+  to {opacity: 0.1;}
+}
+.timeWrapper {float: right}
+.time,.radar {
+  display: inline-block;
+  height: 70px;
+}
+.time {
+  vertical-align: middle;
+  padding-top: 15px;
+  span {
+    display: inline-block;
+    color: $baseFontColor;
+    background-color: #24170F;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 2em;
+  }
+}
+.radar {
+  padding: 12px;
+  img {
+    width: 46px;
+    height: 46px;
+  }
+}
+.block {
+  padding: 10px;
+  .blockTitle {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    font-size: 1.5em;
+    color: #b7cbda;
+    background-color: rgba(255,255,255,0.1);
+    //border: 1px solid #46474c;
+    //box-shadow: 0 0 5px 1px rgba(138,109,59,0.5);
+    .cc-container {
+      position: absolute;
+      top: 0;
+      right: 10px;
+    }
+  }
+  .chartWrapper {
+    background-color: rgba(255,255,255,0.2);
+  }
+}
+.rollList {
+  color: #97c1d9;
+  //background-color: #092143;
+  background-color: rgba(9,33,67,0.5);
+  border: 1px solid #1d3d64;
+  .rl-head {
+    /*height: 50px;*/
+    background-color: rgba(19,48,90,0.5);
+    white-space: nowrap;
+    border-bottom: 1px solid #3d7794;
+    .rl-title {
+      height: 24px;
+      font-size: 1.2em;
+      color: #60a5b7;
+    }
+    .rl-subtitle {
+      height: 16px;
+      font-size: 0.8em;
+      color: #3890a7;
+    }
+  }
+  .rl-body {
+    .rl-tr {
+      height: 36px;
+      border-bottom: 1px solid #3d7794;
+    }
+    .rl:last-child {
+      border-bottom: none;
+    }
+    .rl-td {
+      line-height: 26px;
+    }
+  }
+  .rl-th,.rl-td {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 5px;
+  }
+  .highlight {
+    color: #a2716e !important;
+  }
+  .fa-long-arrow-down {
+    color: #71d5d5;
+  }
+}
+#inList {
+  .rl-th,.rl-td {
+    width: 16%;
+  }
+}
+#stList {
+  .rl-th:nth-child(1),.rl-td:nth-child(1) {
+    width: 20%;
+  }
+  .rl-th:nth-child(2),.rl-td:nth-child(2) {
+    width: 22%;
+  }
+  .rl-th:nth-child(3),.rl-td:nth-child(3) {
+    width: 20%;
+  }
+  .rl-th:nth-child(4),.rl-td:nth-child(4) {
+    width: 20%;
+  }
+  .rl-th:nth-child(5),.rl-td:nth-child(5) {
+    width: 15%;
+  }
+}
+.blockWrapper {
+  position: relative;
+  .lightborder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 1284px;
+    height: 324px;
+    border-style: solid;
+    border-width: 32px 37px;
+    border-image-source: url("../image/lightborder.png");
+    border-image-slice: 32 37 fill;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+  }
+}
+#rankBlock {
+  padding: 0 10px;
+  z-index: 3;
+  .bl-line {
+    padding: 8px 20px;
+    color: #ededed;
+    font-size: 1.3em;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+  .bl-body {
+    padding: 0 20px;
+  }
+}
+#rankList {
+  .rl-th,.rl-td {
+    width: 14%;
+  }
+  .badge {
+    background-color: #337ab7;
+  }
+}

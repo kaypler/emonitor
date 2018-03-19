@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>监控设置</title>
+    <link rel="stylesheet" href="../style/normalize.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../lib/datatables/datatables.css">
+    <link rel="stylesheet" href="../style/image-select.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../lib/jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script src="../lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="../lib/datatables/datatables.js"></script>
+</head>
+<body>
+    <main class="page">
+        <div class="page-container">
+            <div class="page-header">
+                <h1 class="page-title">监控设置</h1>
+                <div class="page-header-actions">
+                    <button class="btn btn-actions"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-actions"><i class="fa fa-rotate-left"></i></button>
+                    <button class="btn btn-actions"><i class="fa fa-play"></i></button>
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="page-panel">
+                    <form class="form-horizontal">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#dprTab" data-toggle="tab">折溢价率</a></li>
+                            <li><a href="#tvTab" data-toggle="tab">实时交易额</a></li>
+                            <li><a href="#ocTab" data-toggle="tab">不定期折算</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="dprTab">
+                                <table id="dprTable" class="table table-bordered table-striped table-hover"></table>
+                                <div class="form-group">
+                                    <label for="dprThreshold" class="control-label col-sm-1" style="width: 10%;">折溢价率阈值：</label>
+                                    <div class="col-sm-push-2">
+                                        <input type="number" id="dprThreshold" name="dprThreshold" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="netType" class="control-label col-sm-1" style="width: 10%;">净值方式：</label>
+                                    <div class="col-sm-push-2">
+                                        <select name="netType" id="netType" class="form-control">
+                                            <option value="1">实时净值</option>
+                                            <option value="2">IOPV</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tvTab">
+                                <table id="tvTable" class="table table-bordered table-striped table-hover" style="width: 100%;"></table>
+                                <div class="form-group">
+                                    <label for="tvDay" class="control-label col-sm-1" style="width: 10%;">过往N天配置：</label>
+                                    <div class="col-sm-push-2">
+                                        <input type="number" id="tvDay" name="tvDay" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="ocTab">
+                                <table id="ocTable" class="table table-bordered table-striped table-hover" style="width: 100%;"></table>
+                                <div class="form-group">
+                                    <label for="ocDay" class="control-label col-sm-1" style="width: 10%;">折算日阈值：</label>
+                                    <div class="col-sm-push-2">
+                                        <input type="number" id="ocDay" name="ocDay" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-panel-header">
+                            <h3 class="page-panel-title">播放设置</h3>
+                        </div>
+                        <div class="page-panel-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-1" style="width: 10%;">显示模块：</label>
+                                <div class="col-sm-10">
+                                    <ul class="img-select">
+                                        <li>
+                                            <div class="img-thumbnail">
+                                                <div class="img-wrapper">
+                                                    <img src="../image/pzmonitor.png" alt="盘中监控屏">
+                                                </div>
+                                                <div class="img-desc">
+                                                    <span>盘中监控屏</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="img-thumbnail">
+                                                <div class="img-wrapper">
+                                                    <img src="../image/phmonitor.png" alt="盘后监控屏">
+                                                </div>
+                                                <div class="img-desc">
+                                                    <span>盘后监控屏</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="refreshTime" class="control-label col-sm-1" style="width: 10%;">刷新频率：</label>
+                                <div class="col-sm-push-2">
+                                    <select name="refreshTime" id="refreshTime">
+                                        <option value="0">从不</option>
+                                        <option value="1">一分钟</option>
+                                        <option value="2">五分钟</option>
+                                        <option value="3">十分钟</option>
+                                        <option value="4">半小时</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="switchTime" class="control-label col-sm-1" style="width: 10%;">切换频率：</label>
+                                <div class="col-sm-push-2">
+                                    <select name="switchTime" id="switchTime">
+                                        <option value="0">手动</option>
+                                        <option value="1">一分钟</option>
+                                        <option value="2">五分钟</option>
+                                        <option value="3">十分钟</option>
+                                        <option value="4">半小时</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="btn-toolbar pull-right" role="toolbar">
+                                    <button class="btn btn-sm btn-primary">确定</button>
+                                    <button class="btn btn-sm btn-default">重置</button>
+                                    <button class="btn btn-sm btn-success">播放</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        $(function () {
+           var zh_cn =  {
+               "sProcessing": "处理中...",
+               "sLengthMenu": "显示 _MENU_ 项结果",
+               "sZeroRecords": "没有匹配结果",
+               "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+               "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+               "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+               "sInfoPostFix": "",
+               "sSearch": "搜索:",
+               "sUrl": "",
+               "sEmptyTable": "表中数据为空",
+               "sLoadingRecords": "载入中...",
+               "sInfoThousands": ",",
+               "oPaginate": {
+                   "sFirst": "首页",
+                   "sPrevious": "上页",
+                   "sNext": "下页",
+                   "sLast": "末页"
+               },
+               "oAria": {
+                   "sSortAscending": ": 以升序排列此列",
+                   "sSortDescending": ": 以降序排列此列"
+               }
+           };
+
+           var dataSet = [
+               ["159915.OF","399006.SZ","易方达创业板ETF","是"],
+               ["159901.OF","399330.SZ","易方达深证100ETF","是"],
+               ["512560.OF","399967.SZ","易方达中证军工ETF",""],
+               ["512570.OF","399975.SZ","易方达中证证券ETF",""],
+               ["159934.OF","Au999.SGE","易方达黄金ETF","是"],
+               ["513050.OF","h11136.CSI","易方达中证海外互联ETF","是"]
+            ];
+           var dprTable = $("#dprTable").DataTable({
+               language: zh_cn,
+               data: dataSet,
+               select: true,
+               column: [
+                   {title: "证券代码"},
+                   {title: "跟踪指数"},
+                   {title: "证券简称"},
+                   {title: "是否活跃"}
+               ],
+               dom: '<"row" <"col-sm-6" B><"col-sm-6" f>>rt<"row" <"col-sm-6" i><"col-sm-6" p>>',
+               buttons: [
+                   {
+                       text: '<i class="fa fa-plus"></i>新增',
+                       titleAttr: '新增',
+                       className: "btn green",
+                       action: function (e, dt, node, config) {
+
+                       }
+                   },
+                   {
+                       text: '<i class="fa fa-minus"></i>删除',
+                       titleAttr: '删除',
+                       className: "btn",
+                       action: function (e, dt, node, config) {
+
+                       }
+                   },
+                   {
+                       extend: 'excel',
+                       text: '<i class="fa fa-file-excel-o"></i>导出'
+                   }
+               ]
+           });
+           var tvTable = $("#tvTable").DataTable({
+               data: dataSet,
+               column: [
+                   {title: "证券代码"},
+                   {title: "跟踪指数"},
+                   {title: "证券简称"},
+                   {title: "是否活跃"}
+               ]
+           });
+            var ocTable = $("#ocTable").DataTable({
+                data: dataSet,
+                column: [
+                    {title: "证券代码"},
+                    {title: "跟踪指数"},
+                    {title: "证券简称"},
+                    {title: "是否活跃"}
+                ]
+            });
+            $(".page-header-actions").on("click", "play", function () {
+               window.open("monitor.html");
+            });
+        });
+    </script>
+</body>
+</html>
