@@ -5,9 +5,71 @@
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <title>监控界面</title>
-
+    <link rel="stylesheet" href="../style/normalize.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../style/monitor.css">
+    <script src="../lib/jquery-3.3.1/jquery-3.3.1.js"></script>
 </head>
 <body>
-
+    <div class="layout">
+        <head>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="monitor">
+                        <img src="../image/monitoring.png">
+                    </div>
+                    <div class="department">
+                        <span>指数与量化投资部</span>
+                    </div>
+                </div>
+                <div class="col-lg-6"></div>
+                <div class="col-lg-3">
+                    <div class="timeWrapper">
+                        <div class="time">
+                            <span>09:30:00</span>
+                        </div>
+                        <div class="radar"><img src="../image/radar.png"></div>
+                    </div>
+                </div>
+            </div>
+        </head>
+        <main>
+            <div id="carousel" class="carousel slide">
+                <ol id="indicators" class="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div id="pzmon" class="item active"></div>
+                    <div id="phmon" class="item"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="loading" style="display: none">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            setInterval(function () {
+                var date = new Date();
+                $("#currentTime").text(date.formatter("hh:mm:ss"));
+            }, 1000);
+            $("#pzmon").load("pzmonitor.html", function () {
+                ChartUtils.init();
+            });
+            $("#phmon").load("phmonitor.html", function () {});
+            $("#carousel").carousel({
+                interval: 5000
+            });
+        });
+    </script>
 </body>
 </html>

@@ -56,13 +56,24 @@ body { background: url("../image/bg.jpg") no-repeat fixed top; overflow: hidden;
 #stList .rl-th:nth-child(5), #stList .rl-td:nth-child(5) { width: 15%; }
 
 .blockWrapper { position: relative; }
-.blockWrapper .lightborder { position: absolute; top: 0; left: 0; z-index: 0; width: 1284px; height: 324px; border-style: solid; border-width: 32px 37px; border-image-source: url("../image/lightborder.png"); border-image-slice: 32 37 fill; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; }
+.blockWrapper .lightborder { position: absolute; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; border-style: solid; border-width: 32px 37px; border-image-source: url("../image/lightborder.png"); border-image-slice: 32 37 fill; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; }
 
-#rankBlock { padding: 0 10px; z-index: 3; }
-#rankBlock .bl-line { padding: 8px 20px; color: #ededed; font-size: 1.3em; letter-spacing: 2px; text-align: center; }
-#rankBlock .bl-body { padding: 0 20px; }
+#rankBlock { z-index: 3; }
+#rankBlock .bl-line { padding: 8px 20px; color: #60A5B7; font-size: 1.3em; letter-spacing: 2px; text-align: center; height: 40px; }
+#rankBlock .bl-body { padding: 0 20px 20px 20px; height: calc(100% - 40px); }
 
 #rankList .rl-th, #rankList .rl-td { width: 14%; }
 #rankList .badge { background-color: #337ab7; }
+
+#indicators { width: 30%; top: -3.5833333333rem; margin-bottom: 0; margin-left: -15%; height: 1.3333333333rem; }
+#indicators li { width: 1.3333333333rem; height: 1.3333333333rem; margin: 0; border: 2px solid #60A5B7; }
+#indicators .active { background-color: #60A5B7; }
+
+#pzmon, #phmon { height: calc(100vh - 70px); }
+#pzmon section, #phmon section { padding: 15px; }
+#pzmon section:nth-child(1), #phmon section:nth-child(1) { height: 45.16129%; }
+#pzmon section:nth-child(2), #phmon section:nth-child(2) { height: 54.83871%; }
+
+#pzmon .chartWrapper { height: calc(100% - 40px); }
 
 /*# sourceMappingURL=monitor.css.map */

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css">
     <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="style/main.css">
+    <script src="lib/jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script src="js/k-core.js"></script>
 </head>
 <body>
     <nav class="main-navbar" role="navigation">
@@ -32,7 +34,7 @@
     <nav class="main-menu">
         <div>
             <div class="menu-category">主页</div>
-            <ul class="nav-menu">
+            <ul id="menuNav" class="nav-menu">
                 <li class="nav-menu-item active">
                     <a href="javascript:;">
                         <i class="fa fa-user-o" aria-hidden="true"></i>
@@ -44,7 +46,7 @@
                 <li class="nav-menu-item">
                     <a href="javascript:;">
                         <i class="fa fa-cog" aria-hidden="true"></i>
-                        <span class="nav-menu-title">参数配置</span>
+                        <span class="nav-menu-title">监控配置</span>
                         <!-- <span class="site-menu-arrow"></span>-->
                     </a>
                     <!--<ul class="nav-menu-sub"></ul>-->
@@ -54,8 +56,8 @@
     </nav>
     <nav class="main-tab">
         <div class="main-tab-content">
-            <ul class="nav-tab">
-                <li class="active index">
+            <ul id="tabNav" class="nav-tab">
+                <!--<li class="active index">
                     <a href="#" target="iframe-0" title="首页">
                         <span>首页</span>
                     </a>
@@ -65,12 +67,12 @@
                         <span>参数配置</span>
                         <i class="fa fa-close"></i>
                     </a>
-                </li>
+                </li>-->
             </ul>
         </div>
     </nav>
     <article class="main-page">
-        <section class="main-content">
+        <section id="mainFrame" class="main-content">
             <iframe src="home.html" frameborder="0" class="page-frame"></iframe>
         </section>
     </article>
@@ -78,5 +80,10 @@
         <div class="f-left">监控系统@kaypler.com</div>
         <div class="f-right">当前版本：v1.0.0</div>
     </footer>
+    <script>
+        $(function () {
+            EFD.init();
+        });
+    </script>
 </body>
 </html>
