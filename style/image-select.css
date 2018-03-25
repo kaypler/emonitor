@@ -1,35 +1,15 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
-img {
-  position: absolute;
-  margin: auto;
-  top: 0; left: 0; bottom: 0; right: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 1px;
-  box-shadow: 0 0 0 4px #fff;
-  cursor: pointer;
-  animation:        unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
-  -o-animation:     unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
-  -ms-animation:    unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
-  -moz-animation:   unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
-  -webkit-animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
-}
-
-@keyframes unselected {
-  0% { box-shadow: 0 0 0 4px #00c09e; }
-  50% { transform: scale(0.5); opacity: 0.8; box-shadow: 0 0 0 4px #fff; }
-  80%,100% { width: 100%; height: 100%; box-shadow: 0 0 0 4px #fff; }
-}
-
-li {
-  position: relative;
-  margin: 10px;
-  width: 157px;
-  height: 157px;
+.img-select li{
   float: left;
+  margin-left: 8px;
 }
-
-li:before {
+.img-select .img-wrapper {
+  padding: 5px;
+  position: relative;
+  height: 100px;
+  width: 160px;
+}
+.img-select .img-wrapper:before {
   content: "\2714";
   display: block;
   position: absolute;
@@ -45,30 +25,38 @@ li:before {
   font-size: 16px;
   z-index: 10;
   opacity: 0;
-  transition:         0.3s linear;
-  -o-transition:      0.3s linear;
-  -ms-transition:     0.3s linear;
-  -moz-transition:    0.3s linear;
-  -webkit-transition: 0.3s linear;
-  -o-user-select:      none;
-  -moz-user-select:    none;
+  transition: 0.3s linear;
   -webkit-user-select: none;
   cursor: pointer;
 }
+.img-select .img-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1px;
+  box-shadow: 0 0 0 4px #fff;
+  cursor: pointer;
+  animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+}
 
-li.selected:before {
+.img-select .img-desc {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.img-select .selected:before {
   opacity: 1;
 }
 
-/* img selection */
-
-li.selected img {
+.img-select .selected img {
   box-shadow: 0 0 0 4px #00c09e;
-  animation:        selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
-  -o-animation:     selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
-  -ms-animation:    selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
-  -moz-animation:   selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
-  -webkit-animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+  animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+}
+
+@keyframes unselected {
+  0% { box-shadow: 0 0 0 4px #00c09e; }
+  50% { transform: scale(0.5); opacity: 0.8; box-shadow: 0 0 0 4px #fff; }
+  80%,100% { width: 100%; height: 100%; box-shadow: 0 0 0 4px #fff; }
 }
 
 @keyframes selected {

@@ -1,0 +1,84 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 12px;
+}
+body {
+  font-size: 12px;
+  font-family: "Microsoft YaHei";
+}
+main {
+  background-color: #f1f4f5;
+}
+ul {
+  margin: 0;
+}
+li {
+  list-style-type: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+.page-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  .page-header {
+    position: relative;
+    padding: 15px 20px;
+    margin: 0;
+    border: none;
+    .page-title {
+      font-size: 18px;
+      mragin: 0;
+    }
+    .page-header-actions {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      z-index: 1;
+      margin: auto;
+      transform: translateY(-50%);
+      .btn-actions {
+        font-size: 14px;
+        color: #76838f;
+        background-color: #fff;
+        border-color: #e4eaec;
+        height: 32px;
+        width: 32px;
+        margin-left: 6px;
+        padding: 8px;
+        line-height: 1em;
+        border-radius: 100px;
+        transtion: border .2s linear,color .2s linear,background-color .2s linear;
+        &:hover {
+          background-color: #fff;
+          border-color: #f3f7f9;
+        }
+      }
+    }
+  }
+  .page-content {
+    padding: 0 20px;
+    .page-panel {
+      background-color: #fff;
+      margin-bottom: 20px;
+      padding: 12px 0;
+      .page-panel-title {
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+  }
+}
+.tab-content {
+  margin-top: 10px;
+}
