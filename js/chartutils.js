@@ -1,12 +1,31 @@
 var ChartUtils = {
+    chartArray: [],
     init: function () {
-        this.drawSymmetryGraph("dprChart");
-        this.drawBars("tvChart");
-        this.drawPie("csChart");
-        this.drawGridBar("ocChart");
-        this.drawLines("spChart");
+        var context = this;
+        context.drawSymmetryGraph("dprChart");
+        context.drawBars("tvChart");
+        context.drawPie("csChart");
+        context.drawGridBar("ocChart");
+        context.drawLines("spChart");
+
+        $(window).resize(function () {
+            Utils.throttle(context.delayResize, context);
+        });
+    },
+    reset: function () {
+        this.chartArray.forEach(function (item) {
+            item.resize();
+        });
+    },
+    delayReset: function () {
+      if (Monitor.status == "pz") {
+          this.reset();
+      }else {
+          Monitor.delayResize = true;
+      }
     },
     drawLines: function (id) {
+        var context = this;
         var option = {
             color: ['#3FF2E8', '#D7FB2D'],
             tooltip: {trigger: 'axis'},
@@ -86,8 +105,10 @@ var ChartUtils = {
         var panel = document.getElementById(id);
         var chart = echarts.init(panel);
         chart.setOption(option);
+        context.chartArray.push(chart);
     },
     drawSymmetryGraph: function (id) {
+        var context = this;
         var labelLeft = {
             normal: {
                 position: 'left'
@@ -180,8 +201,10 @@ var ChartUtils = {
         var panel = document.getElementById(id);
         var chart = echarts.init(panel);
         chart.setOption(option);
+        context.chartArray.push(chart);
     },
     drawPie: function (id) {
+        var context = this;
         var option = {
             color: ['#AFABAB','#9DC3E6','#A9D18E','#F4B183'],
             series: [
@@ -250,8 +273,10 @@ var ChartUtils = {
         var panel = document.getElementById(id);
         var chart = echarts.init(panel);
         chart.setOption(option);
+        context.chartArray.push(chart);
     },
     drawBars: function (id) {
+        var context = this;
         var option = {
             color: ['#5B9BD5','#ED7D31'],
             legend: {
@@ -337,8 +362,10 @@ var ChartUtils = {
         var panel = document.getElementById(id);
         var chart = echarts.init(panel);
         chart.setOption(option);
+        context.chartArray.push(chart);
     },
     drawGridBar: function (id) {
+        var context = this;
         var option = {
             color: ["#5FBCFF"],
             tooltip: {
@@ -350,7 +377,7 @@ var ChartUtils = {
             legend: {
                 data: ['2011年', '2012年']
             },
-           grid: [
+            grid: [
                 {x: '3%', y: '10%', width: '50%', height: '80%',containLabel: true},
                 {x2: '7%', y: '10%', width: '30%', height: '80%',containLabel: true}
             ],
@@ -486,5 +513,6 @@ var ChartUtils = {
         var panel = document.getElementById(id);
         var chart = echarts.init(panel);
         chart.setOption(option);
+        context.chartArray.push(chart);
     }
 };

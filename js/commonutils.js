@@ -17,3 +17,15 @@ Data.prototype.formatter = function (fmt) {
     return fmt;
 };
 /**  Date  **/
+
+;(function (window, document, $, undefined) {
+    window.Utils = {
+        // 节流函数，应用于scroll,resize等事件中
+        throttle: function (method, context) {
+            clearTimeout(method.tid);
+            method.tid = setTimeout(function () {
+                method.call(context);
+            }, 100);
+        }
+    }
+})(window, document, jQuery);
