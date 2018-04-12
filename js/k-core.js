@@ -2,103 +2,116 @@
 ;(function (window, $, undefined) {
     if (typeof window.EFD == "undefined") {
         var EFD = {
-            counter: 0,
-            current: 0,
-            frameArray: [],
-            init: function () {
+            tabMap: {},
+            frameMap: {},
+            init: function (menus) {
                 var that = this;
 
                 // 初始化菜单
-                that.initMenu();
+                that.initMenu(menus);
 
                 // 加载首页
                 that.openTab("个人中心", "home.html");
             },
-            initMenu: function () {
-                var that = this;
-                $("#menuNav li").on("click", "a", function (event) {
-                    if ($(this).parent().hasClass("active")) {
-                        event.preventDefault();
-                        return;
+            initMenu: function (menus) {
+                var context = this;
+                $.each(menus, function (i, m) {
+                    if (i == 0) {
+                        $("#menuCategory").text(m.name);
                     }
 
-                    var tabName = $(this).text();
-                    var url = $(this).attr("href");
-                    that.openTab(tabName. url);
-                    event.preventDefault();
-                })
+                    $('<li><a href="#"><i class="fa "'+m.icon+' aria-hidden="true"></i>&nbsp;<span>'+m.name
+                        +'</span></a></li>').appendTo($("#menuBar"));
+
+                    $.each(m.children, function (i, c) {
+                        var li = $('<li class="nav-menu-item"></li>').appendTo($("#menuNav"));
+                        var a = $('<a href="'+c.url+'"><i class="fa '+c.icon+'" aria-hidden="true"></i><span class="nav-menu-title">&nbsp;'+
+                            c.name+'</span></a>').appendTo(li);
+                        a.click(function (event) {
+                            if ($(this).parent().hasClass("active")) {
+                                event.preventDefault();
+                                return;
+                            }
+
+                            var tabName = $(this).text();
+                            var url = $(this).attr("href");
+                            context.openTab(tabName, url);
+                            event.preventDefault();
+                        });
+                    });
+                    $("#menuNav").children(":first-child").addClass("active");
+                });
+                $("#menuBar").children(":first-child").addClass("active");
             },
             openTab: function (name, url) {
-                var that = this;
-                if (that.isExistPage(url)) {
-                    that.switchTab(that.current);
+                var context = this;
+                if (context.isExistPage(url)) {
+                    context.switchTab(url);
                     return;
                 }
                 
                 $("#menuNav li").removeClass("active");
                 $("menuNav").find("a[href='"+url+"']").addClass("active");
-                var tabItem = $('<li class="active"></li>');
-                var a = $('<a href="#" target="iframe-'+that.counter+'" title="'+name+'"><span>'+name+'</span></a>').click(function (event) {
-                    if ($(this).parent().hasClass("active")) {
-                        event.preventDefault();
+                context.tabMap[url] = $('<li class="active"></li>').data("key", url).appendTo($("#tabNav"));
+                var a = $('<a href="javascript:void(0);" title="'+name+'"><span>'+name+'</span></a>').click(function (event) {
+                    event.preventDefault();
+                    var key = $(this).data("key");
+                    if (context.tabMap.currentKey == key) {
                         return;
                     }
-                    that.current = $(this).attr("target").split("-")[1];
-                    that.switchTab(that.current);
-                    event.preventDefault();
-                }).appendTo(tabItem);
-                $("#tabNav li").removeClass("active");
-                tabItem.appendTo($('#tabNav'));
+                    context.switchTab(key);
+                }).appendTo(context.tabMap[url]);
+
                 if (url.indexOf("home.html") > -1) {
-                    tabItem.addClass("index");
+                    context.tabMap[url].addClass("index");
                 }else {
                     $('<i class="fa fa-close"></i>').click(function (event) {
-                        var target = $(this).parent().attr("target").split("-")[1];
-                        that.closeTab(target);
                         event.stopPropagation();
+                        context.closeTab(url);
                     }).appendTo(a);
                 }
 
-                var iframe = $('<iframe src="'+url+'" frameborder="0" name="iframe-'+that.counter+'" class="page-frame"></iframe>');
-                $("#mainFrame").find("iframe").hide();
-                iframe.appendTo($("#mainFrame"));
-                this.frameArray.push({
-                    "name": name,
-                    "url": url,
-                    "frame": iframe
-                });
-                ++that.counter;
-                ++that.current;
-            },
-            switchTab: function (current) {
-                $("#tabNav li").removeClass("active");
-                $("#tabNav li").eq(current).addClass("active");
-
-                $("#menuNav li").removeClass("active");
-                $("#menuNav").find("a[href='"+this.frameArray[current].url+"']").parent().addClass("active");
-                $("#mainFrame").find("iframe").fadeOut(200);
-                this.frameArray[current].frame.fadeIn(200);
-            },
-            closeTab: function (current) {
-                if ( $("#tabNav li").eq(current).hasClass("active")) {
-                    $("#tabNav li").eq(current - 1).add("active");
-                    this.switchTab(current - 1);
+                context.frameMap[url] = $('<iframe src="'+url+'" frameborder="0" class="page-frame"></iframe>').appendTo($("#mainFrame"));
+                if (!context.tabMap.currentKey) {
+                    context.tabMap.currentKey = url;
+                }else {
+                    context.tabMap[context.tabMap.currentKey].removeClass("active");
+                    context.frameMap[context.tabMap.currentKey].hide();
+                    context.tabMap.currentKey = url;
                 }
-                $("#tabNav li").eq(current).remove();
-                this.frameArray.splice(current, 1);
-                $("#mainFrame").find("iframe").remove();
-                --this.counter;
-                --this.current;
+            },
+            switchTab: function (url) {
+                var context = this;
+                $("#menuNav li").removeClass("active");
+                $("#menuNav").find("a[href='"+url+"']").parent().addClass("active");
+
+                context.tabMap[context.tabMap.currentKey].removeClass("active");
+                context.tabMap[url].addClass("active");
+                context.frameMap[context.tabMap.currentKey].hide();
+                context.frameMap[url].fadeIn(200);
+                context.tabMap.currentKey = url;
+            },
+            closeTab: function (url) {
+                var context = this;
+                if (context.tabMap.currentKey == url) {
+                    var pre = context.tabMap[context.tabMap.currentKey].prev();
+                    context.switchTab(pre.data("key"));
+                }
+
+                context.tabMap[url].remove();
+                context.tabMap[url].removeData();
+                delete context.tabMap[url];
+                context.frameMap[url].remove();
+                delete context.frameMap[url];
             },
             isExistPage: function (url) {
-                var that = this;
+                var context = this;
                 var isExist = false;
-                that.frameArray.forEach(function (item, i) {
-                    if (item.url == url) {
+                for (var key in context.tabMap) {
+                    if (key == url) {
                         isExist = true;
-                        that.current = i;
                     }
-                });
+                }
                 return isExist;
             }
         };
