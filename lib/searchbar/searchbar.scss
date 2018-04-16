@@ -1,0 +1,126 @@
+.searchbar {
+  padding: 15px 0;
+  position: relative;
+  font-family: "Microsoft YaHei";
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  li {
+    list-style-type: none;
+  }
+  .searchbar-form {
+    width: 450px;
+    height: 32px;
+    font-size: 14px;
+    margin: auto;
+    >div {
+      float: left;
+      position: relative;
+    }
+    .searchbar-select {
+      width: 80px;
+      .select-head {
+        height: 32px;
+        line-height: 32px;
+        border: 1px solid #ccc;
+        display: block;
+        text-decoration: none;
+      }
+      .searchbar-type {
+        height: 32px;
+        line-height: 32px;
+        border: 1px solid #ccc;
+        display: block;
+        text-align: center;
+      }
+    }
+    .searchbar-input {
+      width: 300px;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      label {
+        position: absolute;
+        top: 0;
+        left: 15px;
+        height: 32px;
+        line-height: 32px;
+        color: #bababa;
+        z-index: 1;
+      }
+      #search-input {
+        border: 0;
+        outline: none;
+        height: 18px;
+        line-height: 18px;
+        width: 280px;
+        padding: 6px 10px;
+        background: 0;
+        box-sizing: content-box;
+        z-index: 98;
+      }
+    }
+    .searchbar-btn {
+      width: 65px;
+      background-color: #62a8ea;
+      a {
+        display: block;
+        color: #fff;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #62a8ea;
+        &:hover {
+          background-color: #5295ce;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .tooltip {
+    max-height: 310px;
+    width: 366px;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    top: 30px;
+    left: -1px;
+    z-index: 1001;
+    opacity: 1;
+    display: none;
+    li {
+      padding: 0 5px;
+      a {
+        display: block;
+        cursor: pointer;
+        line-height: 30px;
+        height: 30px;
+        border-bottom: 1px solid #eeeeef;
+        &:hover {
+          background-color: #f0f8ff;
+        }
+        span.ri {
+          float: right;
+          color: #a9a9a9;
+          width: 132px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          display: inline-block;
+        }
+        span.le {
+          float: left;
+          width: 200px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

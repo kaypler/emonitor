@@ -1,0 +1,23 @@
+.searchbar { padding: 15px 0; position: relative; font-family: "Microsoft YaHei"; }
+.searchbar * { padding: 0; margin: 0; }
+.searchbar a { text-decoration: none; color: #fff; }
+.searchbar li { list-style-type: none; }
+.searchbar .searchbar-form { width: 450px; height: 32px; font-size: 14px; margin: auto; }
+.searchbar .searchbar-form > div { float: left; position: relative; }
+.searchbar .searchbar-form .searchbar-select { width: 80px; }
+.searchbar .searchbar-form .searchbar-select .select-head { height: 32px; line-height: 32px; border: 1px solid #ccc; display: block; text-decoration: none; }
+.searchbar .searchbar-form .searchbar-select .searchbar-type { height: 32px; line-height: 32px; border: 1px solid #ccc; display: block; text-align: center; }
+.searchbar .searchbar-form .searchbar-input { width: 300px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; }
+.searchbar .searchbar-form .searchbar-input label { position: absolute; top: 0; left: 15px; height: 32px; line-height: 32px; color: #bababa; z-index: 1; }
+.searchbar .searchbar-form .searchbar-input #search-input { border: 0; outline: none; height: 18px; line-height: 18px; width: 280px; padding: 6px 10px; background: 0; box-sizing: content-box; z-index: 98; }
+.searchbar .searchbar-form .searchbar-btn { width: 65px; background-color: #62a8ea; }
+.searchbar .searchbar-form .searchbar-btn a { display: block; color: #fff; line-height: 30px; text-align: center; border: 1px solid #62a8ea; }
+.searchbar .searchbar-form .searchbar-btn a:hover { background-color: #5295ce; color: #fff; }
+.searchbar .tooltip { max-height: 310px; width: 366px; position: absolute; background-color: #fff; border: 1px solid #ccc; overflow: hidden; top: 30px; left: -1px; z-index: 1001; opacity: 1; display: none; }
+.searchbar .tooltip li { padding: 0 5px; }
+.searchbar .tooltip li a { display: block; cursor: pointer; line-height: 30px; height: 30px; border-bottom: 1px solid #eeeeef; }
+.searchbar .tooltip li a:hover { background-color: #f0f8ff; }
+.searchbar .tooltip li a span.ri { float: right; color: #a9a9a9; width: 132px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block; }
+.searchbar .tooltip li a span.le { float: left; width: 200px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block; }
+
+/*# sourceMappingURL=searchbar.css.map */
