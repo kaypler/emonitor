@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>因子走势屏</title>
+    <link rel="stylesheet" href="../style/normalize.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../style/monitor.css">
+    <script src="../lib/jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script src="../lib/echarts-4.04/echarts.js"></script>
+    <style>
+        .yz-wrapper {
+            height: 80px;
+            padding: 10px 0;
+        }
+        .yz-list {
+            height: 100%;
+            padding: 0 20px;
+            margin: 0;
+        }
+        .yz-list li{
+            float: left;
+            width: 20%;
+            height: 30px;
+            list-style: none;
+            cursor: move;
+        }
+        .item {
+            height: 100%;
+        }
+        .detail {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            color: #7AAAD2;
+        }
+        .detail dt {
+            width: 50%;
+            padding: 5px;
+            text-align: center;
+            float: left;
+        }
+        .detail dd {
+            width: 50%;
+            padding: 5px;
+            text-align: center;
+            float: left;
+        }
+        .detail .down {
+            color: #00ff00;
+        }
+        .detail .up {
+            color: #ff0000;
+        }
+        .yz-display {
+            padding: 10px 0;
+        }
+        .chart {
+            width: 100%;
+            height: 200px;
+            border: 2px dotted #2a5578;
+            border-radius: 10px;
+        }
+        .validtarget {
+            border-color: #0090ff;
+        }
+        .highlighted {
+            border-color: #ffb201;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <head>
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="monitor">
+                        <img src="../image/monitoring.png">
+                    </div>
+                    <div class="department">
+                        <span>指数与量化投资部</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-lg-offset-3">
+                    <div class="timeWrapper">
+                        <div class="time">
+                            <span>09:30:00</span>
+                        </div>
+                        <div class="radar"><img src="../image/radar.png"></div>
+                    </div>
+                </div>
+            </div>
+        </head>
+        <article>
+            <section>
+                <div class="block">
+                    <div class="blockTitle" style="text-align: center;">
+                        <span>当日实时累计涨跌幅</span>
+                    </div>
+                    <div class="chartWrapper">
+                        <div class="yz-wrapper">
+                            <ul class="yz-list">
+                                <li style="border-right: 2px solid #2a5578;border-bottom: 2px solid #2a5578;">
+                                     <dl class="detail" draggable="true" data-info="0-贝塔">
+                                        <dt>贝塔</dt>
+                                        <dd class="up">+1.5%</dd>
+                                    </dl>
+                                </li>
+                                <li style="border-right: 2px solid #2a5578;border-bottom: 2px solid #2a5578;">
+                                    <dl class="detail" draggable="true" data-info="1-价格">
+                                        <dt>价格</dt>
+                                        <dd class="up">+0.2%</dd>
+                                    </dl>
+                                </li>
+                                <li style="border-right: 2px solid #2a5578;border-bottom: 2px solid #2a5578;">
+                                    <dl class="detail" draggable="true" data-info="2-盈利">
+                                        <dt>盈利</dt>
+                                        <dd class="down">-0.1%</dd>
+                                    </dl>
+                                </li>
+                                <li style="border-right: 2px solid #2a5578;border-bottom: 2px solid #2a5578;">
+                                    <dl class="detail" draggable="true" data-info="3-成长">
+                                        <dt>成长</dt>
+                                        <dd class="up">+0.6%</dd>
+                                    </dl>
+                                </li>
+                                <li style="border-bottom: 2px solid #2a5578;">
+                                    <dl class="detail" draggable="true" data-info="4-流动性">
+                                        <dt>流动性</dt>
+                                        <dd class="down">-0.2%</dd>
+                                    </dl>
+                                </li>
+                                <li style="border-right: 2px solid #2a5578;">
+                                    <dl class="detail" draggable="true" data-info="5-杠杆">
+                                        <dt>杠杆</dt>
+                                        <dd class="down">-0.8%</dd>
+                                    </dl>
+                                </li>
+                                <li style="border-right: 2px solid #2a5578;">
+                                    <dl class="detail" draggable="true" data-info="6-动量">
+                                        <dt>动量</dt>
+                                        <dd class="up">+0.5%</dd>
+                                    </dl>
+                                </li>
+                                <li style="border-right: 2px solid #2a5578;">
+                                    <dl class="detail" draggable="true" data-info="7-规模">
+                                        <dt>规模</dt>
+                                        <dd class="down">-0.3%</dd>
+                                    </dl>
+                                </li>
+                                <li style="border-right: 2px solid #2a5578;">
+                                    <dl class="detail" draggable="true" data-info="8-中盘">
+                                        <dt>中盘</dt>
+                                        <dd class="up">+1.8%</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="detail" draggable="true" data-info="9-残差波动">
+                                        <dt>残差波动</dt>
+                                        <dd class="down">-0.3%</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="yz-display">
+                            <div class="row" style="padding: 0 20px;margin-bottom: 20px;">
+                                <div class="col-sm-6">
+                                    <div id="chart1" class="chart"></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div id="chart2" class="chart"></div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0 20px;margin-bottom: 20px;">
+                                <div class="col-sm-6">
+                                    <div id="chart3" class="chart"></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div id="chart4" class="chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+    <script>
+        var panels = document.querySelectorAll('.chart');
+        [].forEach.call(panels, function (panel) {
+            panel.addEventListener('dragenter', handleDragEnter, false);
+            panel.addEventListener('dragleave', handleDragLeave, false);
+            panel.addEventListener('drop', handleDrop, false);
+            panel.addEventListener('dragover', handleDragOver, false);
+        });
+
+        var members = document.querySelectorAll('.detail');
+        [].forEach.call(members, function (member) {
+            member.addEventListener('dragstart', handleDragStart, false);
+            member.addEventListener('dragend', handleDragEnd, false);
+        });
+
+        function handleDragStart(evt) {
+            //拖动只支持copd操作
+            evt.effectAllowed = 'copy';
+            evt.dataTransfer.setData("text/html", evt.target.dataset.info);
+
+             [].forEach.call(panels, function (panel) {
+                addClass(panel, 'validtarget');
+            });
+            return true;
+        }
+
+        function handleDragEnter(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            return false;
+        }
+        function handleDragLeave(evt) {
+            removeClass(evt.currentTarget, 'highlighted');
+            return false;
+        }
+        function handleDragOver(evt) {
+            evt.dataTransfer.dropEffect = 'copy';
+            evt.stopPropagation();
+            evt.preventDefault();
+
+            addClass(evt.currentTarget, 'highlighted');
+            return false;
+        }
+        function handleDrop(evt) {
+            evt.preventDefault();
+            evt.stopPropagation();
+
+            var dropTarget = evt.currentTarget;
+            var data = evt.dataTransfer.getData('text/html');
+            drawChart(dropTarget, data);
+        }
+
+        //确保清空所有的拖放操作
+        function handleDragEnd(evt) {  
+            [].forEach.call(panels, function (panel) {
+                removeClass(panel, 'validtarget');
+                removeClass(panel, 'highlighted');
+            });
+            return false;
+        }
+
+        function hasClass( elements,cName ){ 
+          return !!elements.className.match( new RegExp( "(\\s|^)" + cName + "(\\s|$)") ); 
+        }
+        function addClass( elements,cName ){ 
+          if( !hasClass( elements,cName ) ){ 
+            elements.className += " " + cName; 
+          }
+        }
+        function removeClass( elements,cName ){ 
+          if( hasClass( elements,cName ) ){ 
+            elements.className = elements.className.replace( new RegExp( "(\\s|^)" + cName + "(\\s|$)" ), " " );
+          }
+        }
+
+        //绘图
+        function randomData() {
+            var data = [];
+            var now = new Date(2018, 6, 1);
+            var oneDay = 24 * 3600 * 1000;
+            var value = Math.random() * 1000;
+            for (var i = 0; i < 30; i++) {
+                data.push({
+                    name: now.toString(),
+                    value: [
+                        [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+                        Math.round(value)
+                    ]
+                });
+
+                now = new Date(+now + oneDay);
+                value = value + Math.random() * 21 - 10;
+            }
+            return data;
+        }
+
+        var chartList = {};
+        var colors = ['#47AFEE','#FF7F00','#7FC97F','#D8241F','#9564BF','#8D5649',
+            '#E574C3','#FDC086','#BCBF00','#edf0c7'];
+        function drawChart(el, info) {
+            var infos = info.split('-');
+            var index = infos[0];
+            var name = infos[1];
+
+            var data = randomData();
+            var option = {
+                color: colors[index],
+                legend: {
+                    textStyle: {
+                        color: '#7aaad2'
+                    },
+                    data: [name],
+                    bottom: 0,
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '10%',
+                    top: '10%',
+                    containLabel: true
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: function (params) {
+                        params = params[0];
+                        var date = new Date(params.name);
+                        return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+                    },
+                    axisPointer: {
+                        animation: false
+                    }
+                },
+                xAxis: {
+                    type: 'time',
+                    axisTick: {show: false},
+                    axisLabel: {
+                        color: '#7aaad2'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#7aaad2'
+                        }
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    scale: true,
+                    axisLabel: {
+                        color: '#7aaad2'
+                    },
+                    axisLine: {
+                        show: false,
+                        lineStyle: {
+                            color: '#7aaad2'
+                        }
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#7aaad2'
+                        }
+                    }
+                },
+                series: [{
+                    name: name,
+                    type: 'line',
+                    showSymbol: false,
+                    hoverAnimation: false,
+                    data: data
+                }]
+            };
+
+            if (chartList[el.id]) {
+                chartList[el.id].clear();
+            } else {
+                chartList[el.id] = echarts.init(el);
+            }
+            chartList[el.id].setOption(option);
+        }
+    </script>
+</body>
+</html>
