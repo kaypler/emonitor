@@ -1,131 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>盘中监控屏</title>
-    <link rel="stylesheet" href="../style/normalize.css">
-    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../style/monitor.css">
-    <script src="../lib/jquery-3.3.1/jquery-3.3.1.js"></script>
-    <script src="../lib/echarts-4.04/echarts.js"></script>
-    <script src="../js/chartUtils.js"></script>
-</head>
-<body>
-    <div class="layout">
-        <head>
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="monitor">
-                        <img src="../image/monitoring.png">
-                    </div>
-                    <div class="department">
-                        <span>指数与量化投资部</span>
-                    </div>
-                    <div class="status">
-                        <div class="st-wrap">
-                            <span class="st-label">监控级别：</span>
-                            <span class="label label-danger">危险</span>
-                        </div>
+<section>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="block">
+                <div class="blockTitle">
+                    <span>实时ETF折溢价</span>
+                    <div class="cc-container">
+                        <div class="circle" style="background-color: #239d60;"></div>
+                        <div class="circle" style="background-color: #fdab31"></div>
+                        <div class="circle breathe" style="background-color: #f12d2d;"></div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-lg-offset-3">
-                    <div class="timeWrapper">
-                        <div class="time">
-                            <span>09:30:00</span>
-                        </div>
-                        <div class="radar"><img src="../image/radar.png"></div>
-                    </div>
+                <div class="chartWrapper">
+                    <div id="dprChart" style="width: 100%;height: 240px;"></div>
                 </div>
             </div>
-        </head>
-        <article>
-            <section>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="block">
-                            <div class="blockTitle">
-                                <span>ETF折溢价率</span>
-                                <div class="cc-container">
-                                    <div class="circle" style="background-color: #239d60;"></div>
-                                    <div class="circle" style="background-color: #fdab31"></div>
-                                    <div class="circle breathe" style="background-color: #f12d2d;"></div>
-                                </div>
-                            </div>
-                            <div class="chartWrapper">
-                                <div id="dprChart" style="width: 100%;height: 240px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="block">
-                            <div class="blockTitle">
-                                <span>ETF交易量 - 盘中</span>
-                                <div class="cc-container">
-                                    <div class="circle breathe" style="background-color: #239d60;"></div>
-                                    <div class="circle" style="background-color: #fdab31"></div>
-                                    <div class="circle" style="background-color: #f12d2d;"></div>
-                                </div>
-                            </div>
-                            <div class="chartWrapper">
-                                <div id="tvChart" style="width: 100%;height: 240px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="block">
-                            <div class="blockTitle">
-                                <span>股票涨跌情况 - 盘中</span>
-                                <div class="cc-container">
-                                    <div class="circle breathe" style="background-color: #239d60;"></div>
-                                    <div class="circle" style="background-color: #fdab31"></div>
-                                    <div class="circle" style="background-color: #f12d2d;"></div>
-                                </div>
-                            </div>
-                            <div class="chartWrapper">
-                                <div id="csChart" style="width: 100%;height: 240px;"></div>
-                            </div>
-                        </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="block">
+                <div class="blockTitle">
+                    <span>实时ETF交易额</span>
+                    <div class="cc-container">
+                        <div class="circle breathe" style="background-color: #239d60;"></div>
+                        <div class="circle" style="background-color: #fdab31"></div>
+                        <div class="circle" style="background-color: #f12d2d;"></div>
                     </div>
                 </div>
-            </section>
-            <section>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="block">
-                            <div class="blockTitle">
-                                <span>不定期折算</span>
-                                <div class="cc-container">
-                                    <div class="circle" style="background-color: #239d60;"></div>
-                                    <div class="circle" style="background-color: #fdab31"></div>
-                                    <div class="circle breathe" style="background-color: #f12d2d;"></div>
-                                </div>
-                            </div>
-                            <div class="chartWrapper">
-                                <div id="ocChart" style="width: 100%;height: 300px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="block">
-                            <div class="blockTitle">
-                                <span>大小盘强弱及预测指标走势（今年以来）</span>
-                                <div class="cc-container">
-                                    <div class="circle breathe" style="background-color: #239d60;"></div>
-                                    <div class="circle" style="background-color: #fdab31"></div>
-                                    <div class="circle" style="background-color: #f12d2d;"></div>
-                                </div>
-                            </div>
-                            <div class="chartWrapper">
-                                <div id="spChart" style="width: 100%;height: 300px;"></div>
-                            </div>
-                        </div>
+                <div class="chartWrapper">
+                    <div id="tvChart" style="width: 100%;height: 240px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="block">
+                <div class="blockTitle">
+                    <span>实时行情分布</span>
+                    <div class="cc-container">
+                        <div class="circle breathe" style="background-color: #239d60;"></div>
+                        <div class="circle" style="background-color: #fdab31"></div>
+                        <div class="circle" style="background-color: #f12d2d;"></div>
                     </div>
                 </div>
-            </section>
-        </article>
+                <div class="chartWrapper">
+                    <div id="csChart" style="width: 100%;height: 240px;"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script>
-        ChartUtils.init();
-    </script>
-</body>
-</html>
+</section>
+<section>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="block">
+                <div class="blockTitle">
+                    <span>ETF申赎日历</span>
+                    <div class="cc-container">
+                        <div class="circle" style="background-color: #239d60;"></div>
+                        <div class="circle" style="background-color: #fdab31"></div>
+                        <div class="circle breathe" style="background-color: #f12d2d;"></div>
+                    </div>
+                </div>
+                <div class="chartWrapper">
+                    <div id="scChart" style="width: 100%;height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="block">
+                <div class="blockTitle">
+                    <span>实时舆情监控</span>
+                    <div class="cc-container">
+                        <div class="circle breathe" style="background-color: #239d60;"></div>
+                        <div class="circle" style="background-color: #fdab31"></div>
+                        <div class="circle" style="background-color: #f12d2d;"></div>
+                    </div>
+                </div>
+                <div class="chartWrapper">
+                    <div id="newsTable" style="width: 100%;height: 100%;overflow: hidden;position: relative;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script id="sc-tpl" type="text/html">
+    <div>
+        <div class="row" style="margin-bottom: 8px;">
+            <div class="col-sm-6">
+                <label>当前规模：</label><span>{{totalPrice}}</span>&nbsp;亿
+            </div>
+            <div class="col-sm-6" style="padding-left: 0;">
+                    <label>合计：</label><span>{{totalBalance}}</span>&nbsp;亿
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="sc-list">{{#details}}<li>
+                    <label class="sc-label">{{fundName}}</label>
+                    <span class="sc-feild">{{balance}}&nbsp;亿</span>
+                </li>{{/details}}</ul>
+            </div>
+        </div>
+    </div>
+</script>

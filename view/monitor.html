@@ -13,29 +13,52 @@
 </head>
 <body>
     <div class="layout">
-        <head>
+        <header>
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-sm-5">
                     <div class="monitor">
                         <img src="../image/monitoring.png">
                     </div>
                     <div class="department">
-                        <span>指数与量化投资部</span>
-                    </div>
-                </div>
-                <div class="col-lg-6"></div>
-                <div class="col-lg-3">
-                    <div class="timeWrapper">
-                        <div class="time">
-                            <span>09:30:00</span>
+                        <h1>指数与量化投资部</h1>
+                        <div class="subtitle">
+                            <span id="updateTime"></span>
                         </div>
-                        <div class="radar"><img src="../image/radar.png"></div>
+                    </div>
+                    <!-- <div class="status">
+                        <div class="st-wrap">
+                            <span class="st-label">监控级别：</span>
+                            <span class="label label-danger">危险</span>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-sm-7">
+                    <div class="timeWrapper">
+                        <div class="btnbar">
+                            <button class="btn-fullscreen">全屏显示</button>
+                        </div>
+                        <div class="time">
+                            <span id="currentTime">09:30:00</span>
+                        </div>
+                        <div class="radar">
+                            <!-- <img src="../image/radar.png"> -->
+                            <svg style="fill: none;" width="50" height="50" viewBox="0 0 500 500"
+                                xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                <circle cx="250" cy="250" r="50" fill="#60a5b7" stroke-width="0"></circle>
+                                <circle cx="250" cy="250" r="125" stroke="#60a5b7" stroke-width="20"></circle>
+                                <circle cx="250" cy="250" r="215" stroke="#60a5b7" stroke-width="20"></circle>
+                                <line x1="35" y1="250" x2="465" y2="250" style="stroke: #60a5b7;stroke-width: 20;"></line>
+                                <line x1="250" y1="35" x2="250" y2="465" style="stroke: #60a5b7;stroke-width: 20;"></line>
+                                <circle class="radar-point" cx="125" cy="250" r="35" fill="#aa530e" stroke-width="0"></circle>
+                                <circle class="radar-point" cx="250" cy="465" r="35" fill="#8aae92" stroke-width="0"></circle>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
-        </head>
-        <main>
-            <div id="carousel" class="carousel slide">
+        </header>
+        <main id="mainPage">
+            <!-- <div id="carousel" class="carousel slide">
                 <ol id="indicators" class="carousel-indicators">
                     <li data-target="#carousel" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel" data-slide-to="1"></li>
@@ -44,7 +67,7 @@
                     <div id="pzmon" class="item active"></div>
                     <div id="phmon" class="item"></div>
                 </div>
-            </div>
+            </div> -->
         </main>
     </div>
     <div class="loading" style="display: none">
@@ -56,20 +79,37 @@
             <div class="rect5"></div>
         </div>
     </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modalLabel"></h4>
+                </div>
+                <div class="modal-body"></div>
+            </div>
+        </div>
+    </div>
     <script>
         $(function () {
-            setInterval(function () {
-                var date = new Date();
-                $("#currentTime").text(date.formatter("hh:mm:ss"));
-            }, 1000);
-            $("#pzmon").load("pzmonitor.html", function () {
-                ChartUtils.init();
-            });
-            $("#phmon").load("phmonitor.html", function () {});
-            $("#carousel").carousel({
-                interval: 5000
-            });
+            if (window.history && window.history.pushState) {
+                $(window).on('popstate', function () {
+                    window.history.pushState('forward', null, '#');
+                    window.history.forward(1);
+                });
+            }
+            // IE中必须有这两行
+            window.history.pushState('forward', null, '#');
+            window.history.forward(1);
         });
+    </script>
+    <script id="tb-info" type="text/html">
+        <div class="tb-info">
+            <div class="item">
+                {{{text}}}
+            </div>
+        </div>
     </script>
 </body>
 </html>
